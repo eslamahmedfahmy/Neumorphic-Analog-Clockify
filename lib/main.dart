@@ -1,13 +1,14 @@
 import 'package:alarm/alarm.dart';
 import 'package:clock_analog/res/constants.dart';
 import 'package:clock_analog/view/splash_view/splash_screen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  await Alarm.init();
+  if (!kIsWeb) { await Alarm.init(); }
   runApp(const MyApp());
 }
 class MyApp extends StatelessWidget {
